@@ -1,48 +1,24 @@
 import path from "path";
-import CodeMirror, { EditorView } from "@uiw/react-codemirror";
 
 import { readFileSync } from "fs";
-import { useMain } from "./useMain";
+import { Editor } from "../components/Editor";
 import { InferGetStaticPropsType } from "next";
 import { Preview } from "../components/Preview";
 import { SplitPane } from "react-collapse-pane";
-import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
 
 export type MainProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-// TODO
-// - Find somewhere more appropiate to put this...?
-const theme = EditorView.theme({
-  "&": {
-    height: "100vh",
-    padding: "0.6rem",
-    fontSize: "1.2rem",
-  },
-  ".cm-gutters": {
-    display: "none",
-  },
-});
-
 type MainSignature = (props: MainProps) => JSX.Element;
-const Main: MainSignature = (props) => {
-  const { content, setContent } = useMain(props);
+const Main: MainSignature = ({ preContent }) => {
   return (
     // TODO
-    // - Eventually replace this with something more maintained / performant
+    // - Eventually replace `SplitPane` with something more maintained / performant
     <SplitPane split="vertical">
       <div>
-        {/* TODO */}
-        {/* - Move this to it's own component */}
-        {/* - Move `content` to Context to avoid wiping between page navigation */}
-        <CodeMirror
-          theme={theme}
-          value={content}
-          onChange={setContent}
-          extensions={[markdown({ base: markdownLanguage })]}
-        />
+        <Editor preContent={preContent} />
       </div>
       <div className="p-4">
-        <Preview content={content} />
+        <Preview />
       </div>
     </SplitPane>
   );

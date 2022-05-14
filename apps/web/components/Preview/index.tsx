@@ -1,11 +1,11 @@
+import { usePreview } from "./usePreview";
 import { Skill } from "@discretize/gw2-ui-new";
-import { usePreview, PreviewProps } from "./usePreview";
 
 const components = { Skill };
 
-type PreviewSignature = (props: PreviewProps) => JSX.Element;
-const Preview: PreviewSignature = (props) => {
-  const { Component } = usePreview(props);
+type PreviewSignature = () => JSX.Element;
+const Preview: PreviewSignature = () => {
+  const { Component } = usePreview();
   if (Component === undefined) {
     return (
       <div className="flex items-center justify-center h-screen">

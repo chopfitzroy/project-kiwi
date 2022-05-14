@@ -58,7 +58,7 @@ const Navbar: NavbarSignature = () => {
             href="https://github.com/chopfitzroy/project-kiwi/issues/new/choose"
             target="_blank"
           >
-            {expanded && <div className="text-slate-700">Submit Build</div>}
+            {expanded && <div className="text-slate-700">Submit Guide</div>}
             <PullRequests size={22} className="text-slate-700" />
           </a>
         </li>
