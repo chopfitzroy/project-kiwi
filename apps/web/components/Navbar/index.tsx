@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { useNavbar } from "./useNavbar";
 
 import {
@@ -30,16 +32,25 @@ const Navbar: NavbarSignature = () => {
           </button>
         </li>
         <li>
-          <a className="flex items-center justify-between p-4 border-b" href="">
-            {expanded && <div className="text-slate-700">Edit</div>}
-            <Edit size={22} className="text-slate-700" />
-          </a>
+          <Link href="/">
+            <a
+              className="flex items-center justify-between p-4 border-b"
+              href=""
+            >
+              {expanded && <div className="text-slate-700">Edit</div>}
+              <Edit size={22} className="text-slate-700" />
+            </a>
+          </Link>
         </li>
         <li>
-          <a className="flex items-center justify-between p-4 border-b" href="">
-            {expanded && <div className="text-slate-700">Editor Tutorial</div>}
-            <Info size={22} className="text-slate-700" />
-          </a>
+          <Link href="/editor-tutorial">
+            <a className="flex items-center justify-between p-4 border-b">
+              {expanded && (
+                <div className="text-slate-700">Editor Tutorial</div>
+              )}
+              <Info size={22} className="text-slate-700" />
+            </a>
+          </Link>
         </li>
         <li>
           <a

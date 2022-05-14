@@ -31,6 +31,9 @@ const Main: MainSignature = (props) => {
     // - Eventually replace this with something more maintained / performant
     <SplitPane split="vertical">
       <div>
+        {/* TODO */}
+        {/* - Move this to it's own component */}
+        {/* - Move `content` to Context to avoid wiping between page navigation */}
         <CodeMirror
           theme={theme}
           value={content}
