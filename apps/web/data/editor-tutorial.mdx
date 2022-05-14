@@ -1,0 +1,81 @@
+# Tutorial 🎓
+
+First time using the editor? No worries we've got you covered.
+
+The editor uses a language called [markdown](https://daringfireball.net/projects/markdown/) which allows us to mix plain text with custom components like `<Skill />` to create a rich editing experience.
+
+## Finding IDs
+
+Most custom components will require an `id` attribute in order to tell the component which item/skill/etc... it needs to look up.
+
+Finding the ID's can be a bit difficult, fortunately [Discretize](https://discretize.eu/) have developed a useful [lookup tool](https://discretize.eu/editor/ids/) for finding ID's more easily.
+
+If you can't find what you are looking for with the [lookup tool](https://discretize.eu/editor/ids/) you can always resort to the [Wiki](https://wiki.guildwars2.com/wiki/Main_Page).
+
+When using the [Wiki](https://wiki.guildwars2.com/wiki/Main_Page) you will need to go to the item/skill/etc... i.e [Winter's Bite](https://wiki.guildwars2.com/wiki/Winter%27s_Bite) and find the info box picured below:
+
+![Wiki info box](/images/editor-tutorial/infobox.png "Wiki info box")
+
+Next to the **External links** section you will see a link to the [API](https://api.guildwars2.com/v2/skills?ids=12490) this will open the raw API response that the [Wiki](https://wiki.guildwars2.com/wiki/Main_Page) uses to get information about that skill.
+
+Once you have opened the [API](https://api.guildwars2.com/v2/skills?ids=12490) link i.e  `https://api.guildwars2.com/v2/skills?ids=12490` you can get the item/skill/etc... ID from the URL using the `ids=12490` portion of the URL where `12490` is the ID.
+
+Alternatively you can read through the response on that page and find a section (normally near the bottom) that will look like this:
+
+```json
+"id": 12490,
+```
+
+Where `12490` is the ID.
+
+## Custom Components
+
+### Skill
+
+The `<Skill />` component is used to display a single skill, i.e a heal skill, weapon skill, utilitly skill, etc...
+
+The only required attribute is an `id`.
+
+```jsx
+<Skill id="12490" />
+```
+
+For a complete list of the available attributes please see [here](https://discretize.github.io/discretize-ui/?path=/docs/components-skill--lava-font).
+
+## Typography
+
+### Large heading:
+
+```md
+# Large Heading
+```
+
+### Medium heading:
+
+```md
+## Large Heading
+```
+
+### Small heading:
+
+```md
+### Large Heading
+```
+
+### Bold text:
+
+```md
+A **bold text** example
+```
+
+### Italic text:
+
+```md
+An _italic text_ example
+```
+
+### External link:
+
+```md
+An [external link](https://goodnight.kiwi/) example
+```
