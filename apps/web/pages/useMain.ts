@@ -1,3 +1,4 @@
+import { MainProps } from './'
 import { Dispatch, SetStateAction, useState } from "react";
 
 interface UseMain {
@@ -5,9 +6,11 @@ interface UseMain {
   setContent: Dispatch<SetStateAction<string>>;
 }
 
-type UseMainSignature = () => UseMain;
-const useMain: UseMainSignature = () => {
-  const [content, setContent] = useState<string>("");
+type UseMainSignature = (props: MainProps) => UseMain;
+const useMain: UseMainSignature = (props) => {
+  // TODO
+  // - Load from localstorage
+  const [content, setContent] = useState<string>(props.preContent);
 
   return {
     content,
