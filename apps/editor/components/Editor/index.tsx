@@ -1,5 +1,6 @@
 import CodeMirror, { EditorView } from "@uiw/react-codemirror";
 
+import { Save } from "@icon-park/react";
 import { useEditor, EditorProps } from "./useEditor";
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
 
@@ -14,16 +15,24 @@ const theme = EditorView.theme({
   },
 });
 
-type EditorSignature = (props: EditorProps) => JSX.Element;
+type EditorSignature = (props: EditorProps) => null | JSX.Element;
 const Editor: EditorSignature = (props) => {
-  const { editorContent, setEditorContent } = useEditor(props);
+  const { editorContent, setEditorContent, showSaveIndicator } =
+    useEditor(props);
   return (
-    <CodeMirror
-      theme={theme}
-      value={editorContent}
-      onChange={setEditorContent}
-      extensions={[markdown({ base: markdownLanguage })]}
-    />
+    <div className="relative">
+      <CodeMirror
+        theme={theme}
+        value={editorContent}
+        onChange={setEditorContent}
+        extensions={[markdown({ base: markdownLanguage })]}
+      />
+      {showSaveIndicator && (
+        <div className="absolute right-4 bottom-4 p-2 bg-slate-800 rounded pointer-events-none">
+          <Save size={24} className="text-slate-200" />
+        </div>
+      )}
+    </div>
   );
 };
 

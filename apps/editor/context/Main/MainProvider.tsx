@@ -6,7 +6,7 @@ import {
   PropsWithChildren,
 } from "react";
 
-type EditorState = "clean" | "dirty";
+export type EditorState = "clean" | "dirty";
 
 export interface MainContextProps {
   editorState: EditorState;
