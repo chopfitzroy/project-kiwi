@@ -1,3 +1,5 @@
+import sleep from "sleep-promise";
+
 import { useDebounce } from "usehooks-ts";
 import { useMain } from "../../context/Main/useMain";
 import { useEffect, Dispatch, SetStateAction, useState, useMemo } from "react";
@@ -57,6 +59,7 @@ const useEditor: UseEditorSignature = ({ preContent }) => {
 
     (async () => {
       await updateEditorContent(editorContent);
+      await sleep(1000);
       setSaveState("saved");
     })();
   }, [saveState, editorState]);

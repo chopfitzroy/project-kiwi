@@ -27,11 +27,14 @@ const Editor: EditorSignature = (props) => {
         onChange={setEditorContent}
         extensions={[markdown({ base: markdownLanguage })]}
       />
-      {showSaveIndicator && (
-        <div className="absolute right-4 bottom-4 p-2 bg-slate-800 rounded pointer-events-none">
-          <Save size={24} className="text-slate-200" />
-        </div>
-      )}
+
+      <div
+        className={`absolute right-4 bottom-4 p-2 transition-opacity ease-in-out duration-300 bg-slate-800 rounded pointer-events-none ${
+          showSaveIndicator ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <Save size={24} className="text-slate-200" />
+      </div>
     </div>
   );
 };
